@@ -18,21 +18,25 @@ server.listen(3000)
 app.use(cookieParser())
 app.use(express.static(__dirname))
 
-app.use((req, res, next) => {
-  console.log('cookie yyy', req.cookies)
-  if(req.cookies.test !== undefined){
-      res.sendFile(__dirname + '/index.html')
-  }else{
-    
-    next();
-  }
-});
-
-app.get('/demo', (req, res) => {
-  console.log('cookie xxx', req.cookies)
-  res.cookie('test', Math.random(), { maxAge: 10000})
-  res.send('SET COOKIE')
+app.post('/testpost', (req, res) => {
+  res.sendFile(__dirname + '/index.html')
 })
+
+// app.use((req, res, next) => {
+//   console.log('cookie yyy', req.cookies)
+//   if(req.cookies.test !== undefined){
+//       res.sendFile(__dirname + '/index.html')
+//   }else{
+//
+//     next();
+//   }
+// });
+//
+// app.get('/demo', (req, res) => {
+//   console.log('cookie xxx', req.cookies)
+//   res.cookie('test', Math.random(), { maxAge: 10000})
+//   res.send('SET COOKIE')
+// })
 
 // let allRoutes = require('./routes')
 // let allLinks = Object.getOwnPropertyNames(allRoutes)
