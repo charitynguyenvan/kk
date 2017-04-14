@@ -1,5 +1,6 @@
 var express = require('express')
 var app = express()
+var bodyParser = require('body-parser')
 var session = require("express-session")({
     secret: "my-secret",
     resave: true,
@@ -16,10 +17,37 @@ server.listen(3000)
 
 
 app.use(cookieParser())
-app.use(express.static(__dirname))
+app.use(bodyParser.json()); // for parsing application/json
+// app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+
+
+
+app.use('/static', express.static(__dirname))
+
+
+app.get('/demo', (req, res) => {
+
+  res.sendFile(__dirname + '/dist/index.html')
+})
+
 
 app.post('/testpost', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
+  console.log("req.body", req.body);
+  res.end("kdkd")
+  res.send(`
+    <!doctype html>
+    <html>
+      <head>
+        <title>Redux Universal Example</title>
+      </head>
+      <body>
+        <div id="root"></div>
+        <script src="./static/bundle.js"></script>
+      </body>
+    </html>`
+  )
+  // res.sendFile(__dirname + '/index.html')
 })
 
 // app.use((req, res, next) => {

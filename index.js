@@ -11,7 +11,7 @@ import io from 'socket.io-client'
 function optimisticExecute(action, emit, next, dispatch) {
   emit('ANY_NAME', action)
 }
-let socket = io('http://10.22.164.69:3000');
+let socket = io('http://localhost:3000');
 let socketIoMiddleware = createSocketIoMiddleware(socket, "server/", { execute: optimisticExecute });
 let store = applyMiddleware(socketIoMiddleware)(createStore)(chatApp);
 

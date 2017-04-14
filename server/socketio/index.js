@@ -5,7 +5,7 @@ var self = module.exports = {
     sio.use(sharedsession(session))
     sio.on('connection', (socket) => {
       console.log('a user connected')
-      console.log(socket.handshake)
+      // console.log(socket.handshake)
       socket.on('disconnect', () => {
         console.log('a user disconnected')
       })

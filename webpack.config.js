@@ -5,6 +5,7 @@ module.exports = {
     "demo": './index.js',
     "demo-login": './client/components/demo/Login.js'
   },
+  "devtool": "eval",
   output: {
     path: __dirname + '/dist',
     filename: "[name].js"
