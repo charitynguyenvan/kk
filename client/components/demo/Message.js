@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Message = ({ onClick, toggled, author, message }) => (
-  <li
+  <div
     onClick={onClick}
     style={{
       textDecoration: toggled ? 'line-through' : 'none'
     }}
   >
     {author} {": "}  {message}
-  </li>
+  </div>
 )
 
 Message.propTypes = {

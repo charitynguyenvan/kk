@@ -2,12 +2,11 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    "demo": './index.js',
-    "demo-login": './client/components/demo/Login.js'
+    "demo": './index.js'
   },
   "devtool": "eval",
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/client/dist',
     filename: "[name].js"
   },
   module: {
