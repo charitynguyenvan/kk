@@ -11,6 +11,6 @@ import init from './socketio'
 // app.use(session)
 
 const server = http.Server(app)
-const sio = init(server, app.session)
+const sio = init(server)
 
 server.listen(3000)

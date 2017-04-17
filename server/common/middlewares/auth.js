@@ -3,12 +3,12 @@ import ChatAppContainer from '../../../client/containers/demo/ChatAppContainer'
 
 import { renderInitialState } from '../helper'
 
-import { checkTokenDemo } from '../../services/DemoService'
+import { validateTokenDemo } from '../../services/DemoService'
 
 const auth = () => {
   return (req, res, next) => {
 
-    if(checkTokenDemo(req.cookies.token)){
+    if(validateTokenDemo(req.cookies.token)){
       next()
     }else{
       // Compile an initial state

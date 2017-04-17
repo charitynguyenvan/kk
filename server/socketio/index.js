@@ -1,7 +1,9 @@
 import socketIo from 'socket.io'
-import sharedsession from 'express-socket.io-session'
+import allEvents from './events'
+import { validateTokenDemo } from '../services/DemoService'
+// import sharedsession from 'express-socket.io-session'
 
-const init = (server, session) => {
+const init = (server) => {
   const sio = socketIo(server)
   // sio.use(sharedsession(session))
   sio.on('connection', (socket) => {
@@ -11,19 +13,24 @@ const init = (server, session) => {
     socket.on('disconnect', () => {
       console.log('a user disconnected')
     })
-    socket.on('ANY_NAME', (action) => {
-      if(action.type === 'server/SEND_MESSAGE'){
-        console.log('Got data!', action.message);
-        sio.emit('action', {
-          type: 'SEND_MESSAGE',
-          message: action.message,
-          author: 'CHARITY',
-          id: Date.now()
-        });
-      }
-    })
+    //
+    // load all events
+    for(let e in allEvents){
+
+      let handler = allEvents[e]
+      let method = require('../controllers/' + handler.controller)[handler.method]
+      socket.on(e, (action) => {
+        if(validateTokenDemo(action.token)) {
+          method(action, sio)
+        } else {
+          socket.emit('action', {
+            type: 'NOT_LOGGED_IN'
+          })
+        }
+      })
+    }
   })
-  return sio;
+  return sio
 }
 
 export default init

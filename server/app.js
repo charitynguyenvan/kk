@@ -38,7 +38,7 @@ for(let link in allRoutes){
   for(let requestMethod in allMethods){
 
     let handler = allMethods[requestMethod]
-    let method = require('./controllers/' + handler.controller)[handler.method];
+    let method = require('./controllers/' + handler.controller)[handler.method]
 
     app[requestMethod](link, handler.middleware || [], method())
   }
