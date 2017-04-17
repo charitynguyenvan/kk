@@ -1,8 +1,15 @@
-module.exports = {
+import auth from './common/middlewares/auth'
+
+export default {
   '/demo': {
     get: {
       controller: 'DemoController',
-      method: 'chat'
+      middleware: [auth()],
+      method: 'getDemo'
+    },
+    post: {
+      controller: 'DemoController',
+      method: 'postDemo'
     }
   }
 }

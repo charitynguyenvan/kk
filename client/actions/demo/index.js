@@ -56,6 +56,7 @@ export const logIn = (username, password) => {
       })
     })
     .then((res) => {
+      console.log(res);
       dispatch(logInSuccess())
     }, (err) => {
       console.log('lỗi', err);

@@ -9,4 +9,4 @@ const login = (state = { type: 'NOT_LOGGED_IN'}, action) => {
   }
 }
 
-module.exports = login
+export default login
