@@ -1,7 +1,7 @@
-export const checkCookieDemo = (token) => {
-  return token !== undefined
-}
+export const checkTokenDemo = (token) => (token !== undefined)
 
-export const login = (username, password) => {
-  return username === password
+export const login = (username, password) => (username === password)
+
+export const generateTokenDemo = (username) => {
+  return username
 }

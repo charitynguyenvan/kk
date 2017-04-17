@@ -1,3 +1,4 @@
+0. Nếu dùng Windows, thêm biến môi trường `./node_modules/.bin`
 1. Terminal / Command Prompt đến thư mục đầu sỏ chạy lần lượt các câu lệnh:
   - `npm install` : cài những cái cần phải cài trong `package.json`
   - `webpack` : build các file bundle script dựa vào `webpack.config.js`

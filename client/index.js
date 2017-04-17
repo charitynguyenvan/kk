@@ -2,14 +2,18 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import chatApp from './client/reducers/demo'
-import ChatAppContainer from './client/containers/demo/ChatAppContainer'
+import chatApp from './reducers/demo'
+import ChatAppContainer from './containers/demo/ChatAppContainer'
 import thunkMiddleware from 'redux-thunk'
 import createSocketIoMiddleware from 'redux-socket.io'
 import io from 'socket.io-client'
 
+import cookie from 'react-cookie'
+
 function optimisticExecute(action, emit, next, dispatch) {
-  emit('ANY_NAME', action)
+  if(cookie.load('token') !== undefined){
+    emit('ANY_NAME', {...action, token: cookie.load('token')})
+  }
 }
 
 // Grab the state from a global variable injected into the server-generated HTML

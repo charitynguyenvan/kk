@@ -3,10 +3,11 @@ import sharedsession from 'express-socket.io-session'
 
 const init = (server, session) => {
   const sio = socketIo(server)
-  sio.use(sharedsession(session))
+  // sio.use(sharedsession(session))
   sio.on('connection', (socket) => {
     console.log('a user connected')
-    console.log(socket.handshake)
+    // console.log(socket.handshake.session)
+    // console.log(socket.handshake.cookies)
     socket.on('disconnect', () => {
       console.log('a user disconnected')
     })

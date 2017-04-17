@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    "demo": './index.js'
+    "demo": './client/index.js'
   },
   "devtool": "eval",
   output: {

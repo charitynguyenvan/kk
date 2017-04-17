@@ -1,6 +1,8 @@
-import { getPath, renderInitialState } from '../common/helper'
+import chatApp from '../../client/reducers/demo'
+import ChatAppContainer from '../../client/containers/demo/ChatAppContainer'
 
-import { login } from '../services/DemoService'
+import { getPath, renderInitialState } from '../common/helper'
+import { login, generateTokenDemo } from '../services/DemoService'
 
 const getAbsolutePath = getPath(__dirname)
 
@@ -9,8 +11,8 @@ export const getDemo = () => {
     // Compile an initial state
     let preloadedState = {
       login: {
-        type: 'NOT_LOGGED_IN'
-        // type: 'LOG_IN_SUCCESS'
+        // type: 'NOT_LOGGED_IN'
+        type: 'LOG_IN_SUCCESS'
       }
     }
 
@@ -21,15 +23,28 @@ export const getDemo = () => {
 
 export const postDemo = () => {
   return (req, res) => {
+    console.log('cookies', req.cookies);
     let {username, password} = req.body
     console.log(username, password);
     if (login(username, password)) {
-      res.cookie('token', Math.random(), { maxAge: 10000})
-      res.send({
-        login: 'LOG_IN_SUCCESS'
-      })
+
+      res.cookie('token', generateTokenDemo(username), { maxAge: 10000})
+
+      setTimeout(() => {
+        res.send({
+          type: 'LOG_IN_SUCCESS'
+          // type: 'LOG_IN_FAILURE'
+        })
+      }, 1000)
+
     } else {
 
+      setTimeout(() => {
+        res.send({
+          // type: 'LOG_IN_SUCCESS'
+          type: 'LOG_IN_FAILURE'
+        })
+      }, 1000)
     }
   }
 }
