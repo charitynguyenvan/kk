@@ -1,8 +1,9 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: {
     "demo": './client/index.js'
   },
-  "devtool": "eval",
   output: {
     path: __dirname + '/client/dist',
     filename: "[name].js"
@@ -19,5 +20,16 @@ module.exports = {
       }
     ]
   },
-  watch: true
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    })
+  ]
 }

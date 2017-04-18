@@ -28,7 +28,7 @@ export const renderFullPage = (html, preloadedState) => {
     `
 }
 
-export const renderInitialState = (preloadedState, reducer, App) => {
+export const serverSideRenderingDemo = (preloadedState, reducer, App) => {
 
   // Create a new Redux store instance
   const store = createStore(reducer, preloadedState)

@@ -1,4 +1,4 @@
-import cookie from 'react-cookie'
+import config from '../../../config'
 
 export const sendMessage = (message) => ({
     type: 'server/SEND_MESSAGE',
@@ -25,29 +25,24 @@ export const loggingIn = (username) => ({
 })
 
 export const logIn = (username, password) => {
-  // console.log('dispath ok');
-  // console.log(username, password);
+
   return dispatch => {
-    // console.log(username, password);
+
     dispatch(loggingIn(username))
-    // console.log('fetching');
-    fetch('http://localhost:3000/demo', {
+
+    fetch(config.getDomain() + '/demo', {
       headers: {
         "Content-Type": "application/json"
       },
       method: 'POST',
-      credentials: 'include',
+      credentials: 'same-origin',
       body: JSON.stringify({
         "username": username,
         "password": password
       })
     })
     .then((res) => {
-      console.log('res.ok: ', res.ok);
-      console.log('token: ', cookie.load('token'))
-
       res.json().then(json => {
-        console.log(json)
         dispatch(loginResult(json.type))
       })
     }, (err) => {

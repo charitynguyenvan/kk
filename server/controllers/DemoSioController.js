@@ -1,5 +1,3 @@
-import { getUsername } from '../services/DemoService'
-
 export const handleSioDemo = (action, sio) => {
 
   if(action.type === 'server/SEND_MESSAGE'){
@@ -7,7 +5,7 @@ export const handleSioDemo = (action, sio) => {
     sio.emit('action', {
       type: 'SEND_MESSAGE',
       message: action.message,
-      author: getUsername(action.token),
+      author: action.token,
       id: Date.now()
     })
   }
