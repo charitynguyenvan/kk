@@ -1,11 +1,11 @@
-var webpack = require('webpack');
+var webpack = require('webpack')
 
 module.exports = {
   entry: {
-    "demo": './client/index.js'
+    "demo": './index.js'
   },
   output: {
-    path: __dirname + '/client/dist',
+    path: __dirname + '/dist',
     filename: "[name].js"
   },
   module: {

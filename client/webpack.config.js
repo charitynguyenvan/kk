@@ -1,10 +1,10 @@
 module.exports = {
   entry: {
-    "demo": './client/index.js'
+    "demo": './index.js'
   },
   "devtool": "eval",
   output: {
-    path: __dirname + '/client/dist',
+    path: __dirname + '/dist',
     filename: "[name].js"
   },
   module: {
