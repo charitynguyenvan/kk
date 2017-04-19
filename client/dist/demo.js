@@ -534,7 +534,7 @@ eval("module.exports = function(module) {\r\n\tif(!module.webpackPolyfill) {\r\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar config = {\n  PROTOCOL: 'http',\n  IP: 'localhost',\n  PORT: '3000',\n  getDomain: function getDomain() {\n    return config.PROTOCOL + '://' + config.IP + ':' + config.PORT;\n  }\n};\n\nexports.default = config;\n\n//////////////////\n// WEBPACK FOOTER\n// ../config/index.js\n// module id = 68\n// module chunks = 0\n\n//# sourceURL=webpack:///../config/index.js?");
+eval("/* WEBPACK VAR INJECTION */(function(process) {\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar config = {\n  PROTOCOL: 'http',\n  IP: 'localhost',\n  PORT: process.env.PORT || 3000,\n  getDomain: function getDomain() {\n    return config.PROTOCOL + '://' + config.IP + ':' + config.PORT;\n  }\n};\n\nexports.default = config;\n/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))\n\n//////////////////\n// WEBPACK FOOTER\n// ../config/index.js\n// module id = 68\n// module chunks = 0\n\n//# sourceURL=webpack:///../config/index.js?");
 
 /***/ }),
 /* 69 */
