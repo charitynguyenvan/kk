@@ -1,15 +1,38 @@
-import { mTwilioVerifyPhone } from '../services/PhoneService'
-import { mNexmoVerifyPhone, mNexmoVerifyCheck } from '../services/PhoneService'
+import { mNexmoVerifyPhone, mNexmoVerifyCheck, mNexmoVerifyLogout } from '../services/PhoneService'
 
 export const verifyPhone = () => (req, res) => {
   const { phone } = req.body
+
   mNexmoVerifyPhone(phone)
-  // mTwilioVerifyPhone(phone)
-  res.send('Hope OK')
+  .then((status) => {
+      res.send({status})
+  }, (err) => {
+    res.send({
+      status: 'error'
+    })
+  })
 }
 
 export const verifyCheck = () => (req, res) => {
   const { phone, code } = req.body
     mNexmoVerifyCheck(phone, code)
-    res.send('Hope Check OK')
+    .then((status) => {
+        res.send({status})
+    }, (err) => {
+      res.send({
+        status: 'error'
+      })
+    })
+}
+
+export const verifyLogout = () => (req, res) => {
+  const { phone } = req.body
+    mNexmoVerifyLogout(phone)
+    .then((status) => {
+        res.send({status})
+    }, (err) => {
+      res.send({
+        status: 'error'
+      })
+    })
 }

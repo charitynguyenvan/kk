@@ -23,5 +23,11 @@ export default {
       controller: 'PhoneController',
       method: 'verifyCheck'
     }
+  },
+  '/verifylogout': {
+    post: {
+      controller: 'PhoneController',
+      method: 'verifyLogout'
+    }
   }
 }
