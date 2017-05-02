@@ -11,5 +11,17 @@ export default {
       controller: 'DemoController',
       method: 'postDemo'
     }
+  },
+  '/verifyphone': {
+    post: {
+      controller: 'PhoneController',
+      method: 'verifyPhone'
+    }
+  },
+  '/verifycheck': {
+    post: {
+      controller: 'PhoneController',
+      method: 'verifyCheck'
+    }
   }
 }
