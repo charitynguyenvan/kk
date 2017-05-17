@@ -29,5 +29,11 @@ export default {
       controller: 'PhoneController',
       method: 'verifyLogout'
     }
+  },
+  '/s3putobjectsignedurl': {
+    get: {
+      controller: 'S3Controller',
+      method: 'getS3PutObjectSignedUrl'
+    }
   }
 }

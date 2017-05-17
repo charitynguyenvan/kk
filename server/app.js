@@ -29,4 +29,20 @@ for(let link in allRoutes){
   }
 }
 
+app.get('/table', (req, res) => {
+  res.sendFile(getPath(__dirname)('../client/dist/index-table.html'))
+})
+
+app.get('/upload', (req, res) => {
+  res.sendFile(getPath(__dirname)('../client/dist/index-upload.html'))
+})
+// 
+// app.get('/geturl', (req, res) => {
+//   AWS.config.update({region: 'ap-southeast-1'})
+//   const s3 = new AWS.S3()
+//   const params = {Bucket: 'kajkai-avatar', Key: 'liuyifei2.jpg', Expires: 300}
+//   const url = s3.getSignedUrl('putObject', params)
+//   res.send({url})
+// })
+
 export default app
