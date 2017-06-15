@@ -1,8 +1,8 @@
 module.exports = {
   entry: {
     "demo": './index.js',
-    "table": './index-table.js',
-    "upload": './index-upload.js'
+    // "table": './index-table.js',
+    // "upload": './index-upload.js'
   },
   "devtool": "eval",
   output: {
@@ -18,8 +18,11 @@ module.exports = {
           {
             loader: "babel-loader",
             options: {
-              presets: ['es2015', 'react'],
-              // plugins: ["transform-object-rest-spread"]
+              presets: [
+                ['es2015', {'modules': false}],
+                'react'
+              ],
+              plugins: ["transform-object-rest-spread"]
             }
           }
         ]
